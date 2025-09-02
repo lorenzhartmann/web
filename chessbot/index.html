@@ -31,7 +31,7 @@
                     would still be more fun to go in blind and develop my own concepts, instead of merely implementing methods others have used long before me.</li>
                 <li>I want to teach the bot to play chess like a human. Robot J. Fischer needs to learn the same basic chess principles we teach to every chess beginner, and it should not contain any unnatural methods like piece-square-tables</li>
             </ul></p>
-        <h2>The first steps</h2>
+        <h2>The evaluation function</h2>
         <p>It quickly became clear to me that the heart of my bot had to be some kind of evaluation function. This function performs a stratetic (rather than tactical) assessment of a given board and decides how good (or bad) this position is for either player.</p>
             <img src="../objects/evaluate.png" style="width: 20%;" alt="Concept of an evaluation function">
         <p>This function was the first thing I worked on. The challenge is to find the right metrics that make a chess position good for either color, and to find a way to implement them in Python in a computationally efficient way.
@@ -48,7 +48,14 @@
         <p>Based on this evaluation function, we can already set up a minimal working example of a chess bot: Given a position, go through every legal move and play the one that maximizes the evaluation function (or minimizes it, if you are playing with the black pieces)
             Of course, this bot has a profound weakness: It cannot take the opponent's responses into account. For example, if will gladly sacrifice its queen to take your pawn, as this move will momentarily boost the evaluation in its favour.
         </p>
-        
+        <h2>Improving the search alogrithm</h2>
+        <p>This immediate problem can be solved by the bot looking one move deeper. We can tell him to consider every legal move, and every legal response for each move. This will make the bot considerably stronger, but the fundamental issue remains:
+            The evaluation function is not reliable if applied to positions with an "ongoing capture sequence".</p>
+        <p>I came up with the following key idea: The evaluation function should not only return a numerical score, but also the information whether this score is trustworthy or not. The actual implementation of this idea was rather cumbersome, but the basic idea is to scan
+            the current position for hanging pieces and capturing moves that win material at first sight. If the algorithm decides that the naive evaluation is not to be trusted, it can use these same tools to "finish" all outstanding capture sequences, finally
+        arriving at a reliable evalution of the current position. </p>
+        <img src="../objects/search_alg.png" style="width: 60%;" alt="Idea of the alogrithm that kicks in if the evaluation function fails">
+        <p></p>
     </main>
 
 </body>
