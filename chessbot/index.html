@@ -7,6 +7,7 @@
     <title>Chess Bot</title>
     <link rel="stylesheet" href="../style.css">
     <link href="https://fonts.googleapis.com/css2?family=Quicksand:wght@300..700&display=swap" rel="stylesheet">
+    <script src="https://kit.fontawesome.com/6e7a7209fd.js" crossorigin="anonymous"></script>
 </head>
 <body>
     <nav class="navbar">
@@ -49,7 +50,7 @@
             Of course, this bot has a profound weakness: It cannot take the opponent's responses into account. For example, if will gladly sacrifice its queen to take your pawn, as this move will momentarily boost the evaluation in its favour.
         </p>
         <h2>Improving the search alogrithm</h2>
-        <p>This immediate problem can be solved by the bot looking one move deeper. We can tell him to consider every legal move, and every legal response for each move. This will make the bot considerably stronger, but the fundamental issue remains:
+        <p>This immediate problem can be solved by the bot looking one move deeper. We can tell it to consider every legal move, and every legal response for each move. This will make the bot considerably stronger, but the fundamental issue remains:
             The evaluation function is not reliable if applied to positions with an "ongoing capture sequence".</p>
         <p>I came up with the following key idea: The evaluation function should not only return a numerical score, but also the information whether this score is trustworthy or not. The actual implementation of this idea was rather cumbersome, but the basic idea is to scan
             the current position for hanging pieces and capturing moves that win material at first sight. If the algorithm decides that the naive evaluation is not to be trusted, it can use these same tools to think through all outstanding capture sequences, finally
@@ -65,7 +66,16 @@
         <p>This improved the speed of the programme quite a bit, but it was still too slow to justify upgrading the search depth Ultimately, I had to settle for the original base search depth of two, which is increased only if the bot spots a promising tactical combination.</p>
     
         <h2>Playing against Robot J. Fischer</h2>
-        <p>So how did Robot J. Fischer actually perform in playtesting?<br>I have to admit that I fell short of my original goal to create a bot that beat me at chess.</p>
+        <p>So how did Robot J. Fischer actually perform in playtesting?<br>I have to admit that I fell short of my original goal to create a bot that beat me at chess. It still makes
+            many mistakes, and its strategic understanding is no match for a human player with some experience in the game. The programme is, however, a formidable opponent for someone who is new to chess or plays the game casually - I am
+        proud to say that Robot J. Fischer, despite its flaws and limitations, was able to beat a few of my friends and family members rather convincingly.</p>
+        <p>Have you become curious about this project? The good news is, you too can see everything I just talked about in action and play against Robot J. Fischer yourself. After finishing the code, I uploaded the bot to the world's best chess website, lichess.org.
+            Feel free to look through the profile and challenge it to a friendly match!
+        </p>
+        <i class="fa-solid fa-chess-knight"></i><a href="https://lichess.org/@/RobotJFischer" target="_blank">Visit the bot on lichess</a>
+        <p>Let me make a few comments: please note that the bot can only respond to challenges if I am currently running the code on my PC. If not, you may want to challenge it to a correspondence game - the bot will accept the challenge as soon as he is back online. Please also remember
+            to give the bot enough time to think - if you send it a challenge, I recommend a time control of at least 10 minutes + 5 seconds per move.</p>
+        <p>I hope Robot J. Fischer will be a worthy opponent for you, and that you will have as much fun playing it as I had creating the bot.</p>
 
     </main>
 
