@@ -54,7 +54,7 @@
         <p>I came up with the following key idea: The evaluation function should not only return a numerical score, but also the information whether this score is trustworthy or not. The actual implementation of this idea was rather cumbersome, but the basic idea is to scan
             the current position for hanging pieces and capturing moves that win material at first sight. If the algorithm decides that the naive evaluation is not to be trusted, it can use these same tools to think through all outstanding capture sequences, finally
         arriving at a reliable evalution of the current position. </p>
-        <img src="../objects/search_alg.png" style="width: 60%;" alt="Idea of the alogrithm that kicks in if the evaluation function fails">
+        <img src="../objects/search_algo.png" style="width: 60%;" alt="Idea of the alogrithm that kicks in if the evaluation function fails">
         <p>This iterative process is the key to the search algorithm of Robot J. Fischer - it reduces blunders significantly and gives it a respectable tactical awareness.</p>
         <h2>What's next?</h2>
         <p>At this stage, the bot is already a decent chess player, and it can beat most beginners quite comfortably. The next obvious conceptual step is to increase the search depth of the bot, so that it calculates variants more deeply and reliably.
