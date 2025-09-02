@@ -35,7 +35,14 @@
             <img src="../objects/evaluate.png" style="width: 20%;" alt="Concept of an evaluation function">
         <p>This function was the first thing I worked on. The challenge is to find the right metrics that make a chess position good for either color, and to find a way to implement them in Python in a computationally efficient way.
             The obvious starting point is the current material count, but I kept editing this function during the whole coding process to account for more factors that a human chess player would also consider:
-
+            <ul>
+                <li>How much space (= how many legal moves) each side has</li>
+                <li>How well each side defends their pieces and attacks the opponents</li>
+                <li>If there are any passes pawns, or pawns close to promotion</li>
+                <li>How save (= close to the corner) every king is, except during the endgame</li>
+                <li>During the opening phase: How well each side occupies the center with pawns develops their pieces and whether they moved their king</li>
+                <li>During the final moves of the game: How well the own king is activated and the opponent's king is forced to the corner</li>
+            </ul>
         </p>
         
     </main>
