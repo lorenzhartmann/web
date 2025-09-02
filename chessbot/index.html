@@ -31,6 +31,7 @@
                     would still be more fun to go in blind and develop my own concepts, instead of merely implementing methods others have used long before me.</li>
                 <li>I want to teach the bot to play chess like a human. Robot J. Fischer needs to learn the same basic chess principles we teach to every chess beginner, and it should not contain any unnatural methods like piece-square-tables</li>
             </ul></p>
+        <h2>The first steps</h2>
         <p>It quickly became clear to me that the heart of my bot had to be some kind of evaluation function. This function performs a stratetic (rather than tactical) assessment of a given board and decides how good (or bad) this position is for either player.</p>
             <img src="../objects/evaluate.png" style="width: 20%;" alt="Concept of an evaluation function">
         <p>This function was the first thing I worked on. The challenge is to find the right metrics that make a chess position good for either color, and to find a way to implement them in Python in a computationally efficient way.
@@ -43,6 +44,9 @@
                 <li>During the opening phase: How well each side occupies the center with pawns develops their pieces and whether they moved their king</li>
                 <li>During the final moves of the game: How well the own king is activated and the opponent's king is forced to the corner</li>
             </ul>
+        </p>
+        <p>Based on this evaluation function, we can already set up a minimal working example of a chess bot: Given a position, go through every legal move and play the one that maximizes the evaluation function (or minimizes it, if you are playing with the black pieces)
+            Of course, this bot has a profound weakness: It cannot take the opponent's responses into account. For example, if will gladly sacrifice its queen to take your pawn, as this move will momentarily boost the evaluation in its favour.
         </p>
         
     </main>
