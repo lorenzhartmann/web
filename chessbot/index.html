@@ -32,8 +32,11 @@
                 <li>I want to teach the bot to play chess like a human. Robot J. Fischer needs to learn the same basic chess principles we teach to every chess beginner, and it should not contain any unnatural methods like piece-square-tables</li>
             </ul></p>
         <p>It quickly became clear to me that the heart of my bot had to be some kind of evaluation function. This function performs a stratetic (rather than tactical) assessment of a given board and decides how good (or bad) this position is for either player.</p>
-            <img src="objects/evaluate.png" style="width: 20%;" alt="Concept of an evaluation function">
-        <p>This function was the first thing I worked on. The challenge is to find the right metrics that make a chess position good for either color, and to find a way to implement them in Python in a computationally efficient way.</p>
+            <img src="../objects/evaluate.png" style="width: 20%;" alt="Concept of an evaluation function">
+        <p>This function was the first thing I worked on. The challenge is to find the right metrics that make a chess position good for either color, and to find a way to implement them in Python in a computationally efficient way.
+            The obvious starting point is the current material count, but I kept editing this function during the whole coding process to account for more factors that a human chess player would also consider:
+
+        </p>
         
     </main>
 
