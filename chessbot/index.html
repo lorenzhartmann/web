@@ -56,7 +56,7 @@
         arriving at a reliable evalution of the current position. </p>
         <img src="../objects/search_alg.png" style="width: 60%;" alt="Idea of the alogrithm that kicks in if the evaluation function fails">
         <p>This iterative process is the key to the search algorithm of Robert J. Fischer - it reduces blunders significantly and gives it a respectable tactical awareness.</p>
-        <h2>What next?</h2>
+        <h2>What's next?</h2>
         <p>At this stage, the bot is already a decent chess player, and it can beat most beginners quite comfortably. The next obvious conceptual step is to increase the search depth of the bot, so that it calculates variants more deeply and reliably.
             I implemented a backtracking algorithm that allows the bot to calculate positions to arbitrary depth, even though it runs into runtime problems fairly quickly. This is why I spent a lot of time on making the bot faster. One key idea is to idetify
             a list of candidate moves, i.e. moves that are more likely to be good, and to make the bot search through these moves first. If it later finds a move that is worse than one of these candidate moves, it can discard this entire branch of the search tree
