@@ -8,12 +8,9 @@ main { margin: auto; max-width: 1100px; padding-left: 30px; }
 .menuitems {margin:  auto ;max-width: 1100px;}
 
 a{color: inherit;}
-.secret-message {
-  font-family: 'Special Elite', cursive;         
-  color: #222;              
-  letter-spacing: 1px;     
-}
+.secret-message {font-family: 'Special Elite', cursive; color: #222; letter-spacing: 1px;}
 
 
 img {width: 50%;  display: block; margin: auto; object-fit: cover; }
+
 
