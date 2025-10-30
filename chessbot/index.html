@@ -39,15 +39,15 @@
             The obvious starting point is the current material count, but I kept editing this function during the whole coding process to account for more factors that a human chess player would also consider:
             <ul>
                 <li>How much space (= how many legal moves) each side has</li>
-                <li>How well each side defends their pieces and attacks the opponents</li>
+                <li>How well each side defends their pieces and attacks the opponent's</li>
                 <li>If there are any passes pawns, or pawns close to promotion</li>
-                <li>How save (= close to the corner) every king is, except during the endgame</li>
-                <li>During the opening phase: How well each side occupies the center with pawns develops their pieces and whether they moved their king</li>
+                <li>How save (= close to the corner) each king is, except during the endgame</li>
+                <li>During the opening phase: How well each side occupies the center with pawns, develops their pieces, and whether they moved their king</li>
                 <li>During the final moves of the game: How well the own king is activated and the opponent's king is forced to the corner</li>
             </ul>
         I also made sure to add a small random number to the evaluation, so that the bot doesn't play the same moves in every game.</p>
         <p>Based on this evaluation function, we can already set up a minimal working example of a chess bot: Given a position, go through every legal move and play the one that maximizes the evaluation function (or minimizes it, if you are playing with the black pieces)
-            Of course, this bot has a profound weakness: It cannot take the opponent's responses into account. For example, if will gladly sacrifice its queen to take your pawn, as this move will momentarily boost the evaluation in its favour.
+            Of course, this bot has a profound weakness: It cannot take the opponent's responses into account. For example, if will gladly sacrifice its queen to take one of your pawns, as this move will momentarily boost the evaluation in its favour.
         </p>
         <h2>Improving the search alogrithm</h2>
         <p>This immediate problem can be solved by the bot looking one move deeper. We can tell it to consider every legal move, and every legal response for each move. This will make the bot considerably stronger, but the fundamental issue remains:
@@ -66,9 +66,9 @@
         <p>This improved the speed of the programme quite a bit, but it was still too slow to justify upgrading the search depth Ultimately, I had to settle for the original base search depth of two, which is increased only if the bot spots a promising tactical combination.</p>
     
         <h2>Playing against Robot J. Fischer</h2>
-        <p>So how did Robot J. Fischer actually perform in playtesting?<br>I have to admit that I fell short of my original goal to create a bot that beat me at chess. It still makes
-            many mistakes, and its strategic understanding is no match for a human player with some experience in the game. The programme is, however, a formidable opponent for someone who is new to chess or plays the game casually - I am
-        proud to say that Robot J. Fischer, despite its flaws and limitations, was able to beat a few of my friends and family members rather convincingly. It also performed quite well against fellow engines, as you can tell from the game below.
+        <p>So how did Robot J. Fischer actually perform in playtesting?<br>I have to admit that I fell short of my original goal to create a bot that could beat me at chess. It still makes
+            many horrendous mistakes, and its strategic understanding is no match for a human player with some experience in the game. The programme is, however, a formidable opponent for someone who is new to chess or plays the game casually - I am
+        proud to say that Robot J. Fischer, despite its flaws and limitations, was able to beat a few of my friends and family members rather convincingly. It also scored some nice wins against fellow engines, as you can tell from the game below.
         As you can see, Robot J. Fischer struggled at first and lost a piece, but still managed to score a nice comeback win.</p>
         <iframe
             src="https://lichess.org/embed/game/hZxA2lKr?theme=brown&pieceSet=staunty&bg=dark#83"
@@ -80,7 +80,7 @@
             Feel free to look through the profile and challenge it to a friendly match!
         </p>
         <i class="fa-solid fa-chess-knight"></i><a href="https://lichess.org/@/RobotJFischer" target="_blank">Visit the bot on lichess</a>
-        <p>Let me make a few comments: please note that the bot can only respond to challenges if I am currently running the code on my PC. If not, you may want to challenge it to a correspondence game - the bot will accept the challenge as soon as he is back online. Please also remember
+        <p>Let me make a few comments: please note that the bot can only respond to challenges if I am currently running the code on my PC. If not, you may want to challenge it to a correspondence game - the bot will accept the challenge as soon as it is back online. Please also remember
             to give the bot enough time to think - if you send it a challenge, I recommend a time control of at least 10 minutes + 5 seconds per move.</p>
         <p>I hope Robot J. Fischer will be a worthy opponent for you, and that you will have as much fun playing it as I had creating the bot.</p>
 
