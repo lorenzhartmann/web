@@ -375,10 +375,12 @@ main img {
     text-align: center;
 }
 
-.quiz-compass {
-    width: 140px;
-    height: 140px;
-    margin: 0 auto 0.8em;
+.quiz-compass-icon {
+    display: block;
+    margin: 0 auto 0.5em;
+    font-size: 100px;
+    line-height: 1;
+    color: var(--color-accent);
 }
 
 #quiz-menu h2 {
