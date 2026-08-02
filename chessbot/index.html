@@ -1,0 +1,132 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Chess Bot - Lorenz Hartmann</title>
+    <meta name="description" content="Learn more about how I coded my very own chess bot and how you can play it online.">
+    <link rel="canonical" href="https://lorenzhartmann.me/chessbot/">
+
+    <link rel="icon" type="image/png" sizes="32x32" href="../favicon-32x32.png">
+    <link rel="icon" type="image/png" sizes="16x16" href="../favicon-16x16.png">
+    <link rel="apple-touch-icon" sizes="180x180" href="../apple-touch-icon.png">
+    <link rel="icon" href="../favicon.ico">
+
+    <meta property="og:type" content="website">
+    <meta property="og:url" content="https://lorenzhartmann.me/chessbot/">
+    <meta property="og:title" content="Chess Bot - Lorenz Hartmann">
+    <meta property="og:description" content="Learn more about how I coded my very own chess bot and how you can play it online.">
+    <meta property="og:image" content="https://lorenzhartmann.me/objects/og-image.jpg">
+    <meta name="twitter:card" content="summary_large_image">
+    <meta name="twitter:title" content="Chess Bot - Lorenz Hartmann">
+    <meta name="twitter:description" content="Learn more about how I coded my very own chess bot and how you can play it online.">
+    <meta name="twitter:image" content="https://lorenzhartmann.me/objects/og-image.jpg">
+
+    <link rel="stylesheet" href="../style.css">
+    <link rel="stylesheet" href="../fontawesome/css/all.min.css">
+</head>
+<body>
+    <nav class="navbar">
+        <div class="nav-inner">
+            <input type="checkbox" id="nav-toggle" class="nav-toggle">
+            <div class="menuitems">
+                <a href="../">About Me</a>
+                <a href="../research/">Research</a>
+                <a href="" class="active">Chess Bot</a>
+                <a href="../travel/">Travel</a>
+                <a href="../quiz/">Quiz</a>
+                <a href="../contact/">Contact Me</a>
+            </div>
+            <label for="nav-toggle" class="nav-toggle-label" aria-label="Toggle navigation menu">
+                <span></span><span></span><span></span>
+            </label>
+        </div>
+    </nav>
+
+    <main>
+        <h1>Coding a Chess Robot from scratch</h1>
+        <p>Please meet Robot J. Fischer, a chess bot I coded from scratch in Python! On this page, you can find out how Robot J. Fischer was built, and how you can test it (and your chess skills) online. This project is a coding challenge I set out to complete when I caught a cold in June 2025.
+            My original goal was to code a bot that would be able to beat me at chess - we'll see how that turned out below. </p>
+        <p> When I decided to tackle this project, there were a few decisions (or design choices) I made: </p>
+        <ul>
+            <li>The bot had to be coded entirely by me in Python - no endgame tables, online resources or opening books.</li>
+            <li>I would not look at instructions online, or research how chess bots are usually implemented.
+                Admittedly, I was not entirely new to the topic since I knew stories of people completing similar projects before, and I did use online resources when I got stuck. But I figured that it
+                would still be more fun to go in blind and develop my own concepts, instead of merely implementing methods others have used long before me.</li>
+            <li>I want to teach the bot to play chess like a human. Robot J. Fischer needs to learn the same basic chess principles we teach to every chess beginner, and it should not contain any unnatural methods like piece-square-tables</li>
+        </ul>
+        <h2>The evaluation function</h2>
+        <p>It quickly became clear to me that the heart of my bot had to be some kind of evaluation function. This function performs a strategic (rather than tactical) assessment of a given board and decides how good (or bad) this position is for either player.</p>
+        <img src="../objects/evaluate.png" class="img-xs" alt="Concept of an evaluation function">
+        <p>This function was the first thing I worked on. The challenge is to find the right metrics that make a chess position good for either color, and to find a way to implement them in Python in a computationally efficient way.
+            The obvious starting point is the current material count, but I kept editing this function during the whole coding process to account for more factors that a human chess player would also consider:
+            <ul>
+                <li>How much space (= how many legal moves) each side has</li>
+                <li>How well each side defends their pieces and attacks the opponent's</li>
+                <li>If there are any passed pawns, or pawns close to promotion</li>
+                <li>How safe (= close to the corner) each king is, except during the endgame</li>
+                <li>During the opening phase: How well each side occupies the center with pawns, develops their pieces, and whether they moved their king</li>
+                <li>During the final moves of the game: How well the own king is activated and the opponent's king is forced to the corner</li>
+            </ul>
+        I also made sure to add a small random number to the evaluation, so that the bot doesn't play the same moves in every game.</p>
+        <p>Based on this evaluation function, we can already set up a minimal working example of a chess bot: Given a position, go through every legal move and play the one that maximizes the evaluation function (or minimizes it, if you are playing with the black pieces).
+            Of course, this bot has a profound weakness: It cannot take the opponent's responses into account. For example, it will gladly sacrifice its queen to take one of your pawns, as this move will momentarily boost the evaluation in its favour.
+        </p>
+        <h2>Improving the search algorithm</h2>
+        <p>This immediate problem can be solved by the bot looking one move deeper. We can tell it to consider every legal move, and every legal response for each move. This will make the bot considerably stronger, but the fundamental issue remains:
+            The evaluation function is not reliable if applied to positions with an "ongoing capture sequence".</p>
+        <p>I came up with the following key idea: The evaluation function should not only return a numerical score, but also the information whether this score is trustworthy or not. The actual implementation of this idea was rather cumbersome, but the basic idea is to scan
+            the current position for hanging pieces and capturing moves that win material at first sight. If the algorithm decides that the naive evaluation is not to be trusted, it can use these same tools to think through all outstanding capture sequences, finally
+        arriving at a reliable evaluation of the current position. </p>
+        <img src="../objects/search_algo.png" class="img-lg" alt="Idea of the algorithm that kicks in if the evaluation function fails">
+        <p>This iterative process is the key to the search algorithm of Robot J. Fischer - it reduces blunders significantly and gives it a respectable tactical awareness.</p>
+        <h2>What's next?</h2>
+        <p>At this stage, the bot is already a decent chess player, and it can beat most beginners quite comfortably. The next obvious conceptual step is to increase the search depth of the bot, so that it calculates variants more deeply and reliably.
+            I implemented a backtracking algorithm that allows the bot to calculate positions to arbitrary depth, even though it runs into runtime problems fairly quickly. This is why I spent a lot of time on making the bot faster. One key idea is to identify
+            a list of candidate moves, i.e. moves that are more likely to be good, and to make the bot search through these moves first. If it later finds a move that is worse than one of these candidate moves, it can discard this entire branch of the search tree
+            immediately.
+        </p>
+        <p>This improved the speed of the programme quite a bit, but it was still too slow to justify upgrading the search depth. Ultimately, I had to settle for the original base search depth of two, which is increased only if the bot spots a promising tactical combination.</p>
+
+        <h2>Playing against Robot J. Fischer</h2>
+        <p>So how did Robot J. Fischer actually perform in playtesting?<br>I have to admit that I fell short of my original goal to create a bot that could beat me at chess. It still makes
+            many horrendous mistakes, and its strategic understanding is no match for a human player with some experience in the game. The programme is, however, a formidable opponent for someone who is new to chess or plays the game casually - I am
+        proud to say that Robot J. Fischer, despite its flaws and limitations, was able to beat a few of my friends and family members rather convincingly. It also scored some nice wins against fellow engines, as you can tell from the game below.
+        As you can see, Robot J. Fischer struggled at first and lost a piece, but still managed to score a nice comeback win.</p>
+        <p class="embed-note">Loading this embed may transfer data to lichess.org &ndash; see the <a href="../contact/#privacy">Privacy Notice</a>.</p>
+        <div class="embed-wrap" id="lichess-embed">
+            <button type="button" class="embed-load-btn" id="lichess-load-btn">
+                <i class="fa-solid fa-chess-knight"></i> Click to load the interactive game from lichess.org
+            </button>
+        </div>
+        <script>
+            document.getElementById('lichess-load-btn').addEventListener('click', function () {
+                var wrap = document.getElementById('lichess-embed');
+                var iframe = document.createElement('iframe');
+                iframe.src = 'https://lichess.org/embed/game/hZxA2lKr?theme=brown&pieceSet=staunty&bg=dark#83';
+                iframe.setAttribute('frameborder', '0');
+                wrap.replaceChildren(iframe);
+            });
+        </script>
+        <p>Have you become curious about this project? The good news is, you too can see everything I just talked about in action and play against Robot J. Fischer yourself. After finishing the code, I uploaded the bot to the world's best chess website, lichess.org.
+            Feel free to look through the profile and challenge it to a friendly match!
+        </p>
+        <i class="fa-solid fa-chess-knight"></i> <a href="https://lichess.org/@/RobotJFischer" target="_blank" rel="noopener">Visit the bot on lichess</a>
+        <p>Let me make a few comments: please note that the bot can only respond to challenges if I am currently running the code on my PC. If not, you may want to challenge it to a correspondence game - the bot will accept the challenge as soon as it is back online. Please also remember
+            to give the bot enough time to think - if you send it a challenge, I recommend a time control of at least 10 minutes + 5 seconds per move.</p>
+        <p>I hope Robot J. Fischer will be a worthy opponent for you, and that you will have as much fun playing it as I had creating the bot.</p>
+    </main>
+
+    <footer class="site-footer">
+        <span>&copy; 2026 Lorenz Hartmann</span>
+        <div class="footer-links">
+            <a href="../contact/">Contact</a>
+            <a href="../contact/#legal-notice">Legal Notice</a>
+            <a href="../contact/#privacy">Privacy</a>
+        </div>
+    </footer>
+
+    <button id="back-to-top" class="back-to-top" type="button" aria-label="Back to top">&uarr; Top</button>
+    <script src="../script.js" defer></script>
+</body>
+</html>
