@@ -53,7 +53,7 @@
             <li>I would not look at instructions online, or research how chess bots are usually implemented.
                 Admittedly, I was not entirely new to the topic since I knew stories of people completing similar projects before, and I did use online resources when I got stuck. But I figured that it
                 would still be more fun to go in blind and develop my own concepts, instead of merely implementing methods others have used long before me.</li>
-            <li>I want to teach the bot to play chess like a human. Robot J. Fischer needs to learn the same basic chess principles we teach to every chess beginner, and it should not contain any unnatural methods like piece-square-tables</li>
+            <li>I want to teach the bot to play chess like a human. Robot J. Fischer needs to learn the same basic chess principles we teach to every chess beginner, and it should not contain any unnatural methods like piece-square-tables.</li>
         </ul>
         <h2>The evaluation function</h2>
         <p>It quickly became clear to me that the heart of my bot had to be some kind of evaluation function. This function performs a strategic (rather than tactical) assessment of a given board and decides how good (or bad) this position is for either player.</p>
@@ -81,7 +81,7 @@
         <img src="../objects/search_algo.png" class="img-lg" alt="Idea of the algorithm that kicks in if the evaluation function fails">
         <p>This iterative process is the key to the search algorithm of Robot J. Fischer - it reduces blunders significantly and gives it a respectable tactical awareness.</p>
         <h2>What's next?</h2>
-        <p>At this stage, the bot is already a decent chess player, and it can beat most beginners quite comfortably. The next obvious conceptual step is to increase the search depth of the bot, so that it calculates variants more deeply and reliably.
+        <p>At this stage, the bot is already a respectable chess player that can beat most beginners. The next big conceptual step is to increase the search depth of the bot, so that it calculates variants more deeply and reliably.
             I implemented a backtracking algorithm that allows the bot to calculate positions to arbitrary depth, even though it runs into runtime problems fairly quickly. This is why I spent a lot of time on making the bot faster. One key idea is to identify
             a list of candidate moves, i.e. moves that are more likely to be good, and to make the bot search through these moves first. If it later finds a move that is worse than one of these candidate moves, it can discard this entire branch of the search tree
             immediately.
@@ -90,7 +90,9 @@
 
         <h2>Playing against Robot J. Fischer</h2>
         <p>So how did Robot J. Fischer actually perform in playtesting?<br>I have to admit that I fell short of my original goal to create a bot that could beat me at chess. It still makes
-            many horrendous mistakes, and its strategic understanding is no match for a human player with some experience in the game. The programme is, however, a formidable opponent for someone who is new to chess or plays the game casually - I am
+            many horrendous mistakes, and its strategic understanding is no match for a human player with some experience in the game. To make matters worse, the bot sometimes makes terrible unforced blunders the origin of which I can't explain myself. Either there is some bug in the search algorithm that I missed, or the evaluation function 
+            itself has become so complicated that the bot starts to "hallucinate" and makes decisions I don't understand.</p>
+           <p> Nonetheless, the programme is a formidable opponent for someone who is new to chess or plays the game casually - I am
         proud to say that Robot J. Fischer, despite its flaws and limitations, was able to beat a few of my friends and family members rather convincingly. It also scored some nice wins against fellow engines, as you can tell from the game below.
         As you can see, Robot J. Fischer struggled at first and lost a piece, but still managed to score a nice comeback win.</p>
         <p class="embed-note">Loading this embed may transfer data to lichess.org &ndash; see the <a href="../contact/#privacy">Privacy Notice</a>.</p>
@@ -112,7 +114,7 @@
             Feel free to look through the profile and challenge it to a friendly match!
         </p>
         <i class="fa-solid fa-chess-knight"></i> <a href="https://lichess.org/@/RobotJFischer" target="_blank" rel="noopener">Visit the bot on lichess</a>
-        <p>Let me make a few comments: please note that the bot can only respond to challenges if I am currently running the code on my PC. If not, you may want to challenge it to a correspondence game - the bot will accept the challenge as soon as it is back online. Please also remember
+        <p>Please note that the bot can only respond to challenges if I am currently running the code on my PC. If not, you may want to challenge it to a correspondence game - the bot will accept the challenge as soon as it is back online. Please also remember
             to give the bot enough time to think - if you send it a challenge, I recommend a time control of at least 10 minutes + 5 seconds per move.</p>
         <p>I hope Robot J. Fischer will be a worthy opponent for you, and that you will have as much fun playing it as I had creating the bot.</p>
     </main>
