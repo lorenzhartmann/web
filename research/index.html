@@ -72,8 +72,73 @@
                     </span>
                 </summary>
                 <div class="accordion-body">
-                    <div class="accordion-body-inner">
-                        <p>This page is currently under construction. Come back soon for more content!</p>
+                                        <div class="accordion-body-inner">
+                        <p>Black holes are fascinating objects, not least because they seem to be so featureless. If we trust Einstein&rsquo;s theory of relativity, a black hole can fully be characterised by just a few numbers, for example the angular momentum, mass, or electric charge of the black hole. This story changes once we bring quantum mechanics into the picture. For example, quantum physics predicts that black holes radiate at a so-called Hawking temperature. In my Part III essay, I gave an overview of the physics of low-temperature charged black holes and discussed the exciting and subtle quantum effects that are important in this regime.</p>
+
+                        <p>The central tool in this case is the gravitational path integral. It allows us to calculate various physical quantities of interest perturbatively via the expansion</p>
+
+                        <p style="text-align:center; font-family:'Cambria Math','STIX Two Math',Georgia,'Times New Roman',serif; font-size:1.2em; line-height:2; margin:1.4em 0;">
+                            <i>Z</i> = &int; <i>Dg</i><sub>&mu;&nu;</sub> <i>DA</i><sub>&mu;</sub> <i>e</i><sup>&minus;<i>S</i></sup><br>
+                            &asymp; ( det <i>&Scirc;</i><sub>quadratic</sub> )<sup>&minus;1/2</sup> <i>e</i><sup>&minus;<i>S</i><sub>classical</sub></sup>
+                        </p>
+
+                        <p>Two famous formulae about black holes follow directly from the tree-level path integral. Requiring the Euclidean solution to be smooth fixes the black hole temperature, while evaluating the action on the classical solution gives its entropy &mdash; following the method by Gibbons and Hawking, one finds</p>
+
+                        <p style="text-align:center; font-family:'Cambria Math','STIX Two Math',Georgia,'Times New Roman',serif; font-size:1.2em; margin:1.4em 0;">
+                            <i>T</i> =
+                            <span style="display:inline-block; vertical-align:middle; text-align:center; line-height:1.2;">
+                                <span style="display:block; padding:0 .3em;">&kappa;</span>
+                                <span style="display:block; border-top:1px solid currentColor; padding:0 .3em;">2&pi;</span>
+                            </span>
+                            <span style="display:inline-block; width:3.5em;"></span>
+                            <i>S</i><sub>BH</sub> =
+                            <span style="display:inline-block; vertical-align:middle; text-align:center; line-height:1.2;">
+                                <span style="display:block; padding:0 .3em;"><i>A</i></span>
+                                <span style="display:block; border-top:1px solid currentColor; padding:0 .3em;">4</span>
+                            </span>
+                        </p>
+
+                        <p>One can push this strategy beyond tree level. At the next order in perturbation theory, one must calculate the eigenvalues of the differential operator appearing in the action. The surprising result: an infinite number of zero modes appears at exactly zero temperature. Moving slightly away from extremality lifts these modes, giving each a small eigenvalue proportional to the temperature, and it is precisely these lifted modes that make the one-loop contribution to the entropy logarithmic,</p>
+
+                        <p style="text-align:center; font-family:'Cambria Math','STIX Two Math',Georgia,'Times New Roman',serif; font-size:1.2em; margin:1.4em 0;">
+                            &Delta;<i>S</i><sub>BH</sub> &sim; log <i>T</i>
+                        </p>
+
+                        <p>which dominates the familiar area law at low temperatures. The reason for this behaviour is the special AdS<sub>2</sub> &times; S<sup>2</sup> near-horizon geometry of the black hole.</p>
+
+                        <svg viewBox="0 0 245 190" role="img" aria-labelledby="thTitle thDesc" style="width:100%; max-width:320px; display:block; margin:1.8em auto;">
+                            <title id="thTitle">The AdS2 x S2 throat</title>
+                            <desc id="thDesc">A flat Minkowski plane, drawn as a parallelogram, with a funnel opening downwards out of it. The funnel narrows into a long vertical throat labelled AdS2 x S2, with an arrow marking the horizon and a dotted ellipse showing that the throat continues downwards.</desc>
+
+                            <defs>
+                                <marker id="thArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                                    <path d="M0,0 L8,4 L0,8 Z" fill="var(--color-text)"/>
+                                </marker>
+                            </defs>
+
+                            <path d="M50,30 L10,90 L190,90 L230,30 Z" fill="none" stroke="var(--color-accent)" stroke-width="1.6"/>
+
+                            <path d="M98,118 A60,60 0 0 0 58.5,61.6" fill="none" stroke="var(--color-accent)" stroke-width="1.6"/>
+                            <path d="M138,118 A60,60 0 0 1 177.5,61.6" fill="none" stroke="var(--color-accent)" stroke-width="1.6"/>
+
+                            <line x1="98" y1="118" x2="98" y2="170" stroke="var(--color-accent)" stroke-width="1.6"/>
+                            <line x1="138" y1="118" x2="138" y2="170" stroke="var(--color-accent)" stroke-width="1.6"/>
+
+                            <ellipse cx="118" cy="170" rx="20" ry="8" fill="none" stroke="var(--color-accent)" stroke-width="2" stroke-dasharray="1.5 3.5" stroke-linecap="round"/>
+
+                            <line x1="90" y1="126" x2="90" y2="164" stroke="var(--color-text)" stroke-width="1.2" marker-end="url(#thArrow)"/>
+                            <text x="84" y="150" text-anchor="end" font-size="14" fill="var(--color-text)">horizon</text>
+
+                            <text x="146" y="150" font-size="14" fill="var(--color-text)">AdS<tspan dy="4" font-size="10">2</tspan><tspan dy="-4"> &#215; S</tspan><tspan dy="-6" font-size="10">2</tspan></text>
+
+                            <text x="140" y="23" text-anchor="middle" font-size="14" fill="var(--color-text)">Minkowski</text>
+                        </svg>
+
+                        <p>What does this mean for the existence and physicality of the zero temperature limit? If you are curious about the wondrous world of quantum black holes, you can download my essay here.</p>
+
+                        <p><i class="fa-solid fa-book"></i> <a href="../objects/Hartmann_Essay.pdf" download>Download the essay (PDF)</a></p>
+
+                        <p>The essay also contains references and further resources. If you have any questions or just want to have a chat, please reach out.</p>
                     </div>
                 </div>
             </details>
