@@ -102,22 +102,26 @@
 
                         <p>This so-called "no boundary proposal" thus describes the creation of a self-contained universe from "nothing". This is illustrated with the shuttlecock geometry:</p>
 
-                        <svg viewBox="0 0 320 330" role="img" aria-labelledby="nbTitle nbDesc" style="width:100%; max-width:280px; display:block; margin:1.6em auto;">
+                        <svg viewBox="0 0 430 330" role="img" aria-labelledby="nbTitle nbDesc" style="width:100%; max-width:360px; display:block; margin:1.6em auto;">
                             <title id="nbTitle">No-boundary geometry</title>
-                            <desc id="nbDesc">A smooth surface that starts as a single closed point and flares outward into an open, expanding shape, like a badminton shuttlecock, illustrating the no-boundary proposal.</desc>
-
-                            <path d="M160,272 C100,257 70,192 70,112 C70,92 78,74 95,70 L225,70 C242,74 250,92 250,112 C250,192 220,257 160,272 Z"
-                                  fill="var(--color-bg)" stroke="var(--color-accent)" stroke-width="2.5"/>
-
-                            <ellipse cx="160" cy="140" rx="48" ry="8" fill="none" stroke="var(--color-accent)" stroke-width="1" opacity="0.35"/>
-                            <ellipse cx="160" cy="200" rx="30" ry="6" fill="none" stroke="var(--color-accent)" stroke-width="1" opacity="0.35"/>
-                            <ellipse cx="160" cy="70" rx="65" ry="10" fill="none" stroke="var(--color-accent)" stroke-width="2.5"/>
-
-                            <line x1="160" y1="38" x2="160" y2="64" stroke="var(--color-text)" stroke-width="1.2"/>
-                            <text x="160" y="28" text-anchor="middle" font-size="15" fill="var(--color-text)">today</text>
-
-                            <line x1="160" y1="272" x2="160" y2="296" stroke="var(--color-text)" stroke-width="1.2"/>
-                            <text x="160" y="312" text-anchor="middle" font-size="14" fill="var(--color-text)">no initial boundary</text>
+                            <desc id="nbDesc">A half-capped sphere at the bottom (the Euclidean instanton) joining smoothly onto a flaring de Sitter hyperboloid going up to an open rim at the top, illustrating the no-boundary proposal.</desc>
+                        
+                            <defs>
+                                <marker id="nbArrow" markerWidth="8" markerHeight="8" refX="6" refY="4" orient="auto">
+                                    <path d="M0,0 L8,4 L0,8 Z" fill="var(--color-text)"/>
+                                </marker>
+                            </defs>
+                        
+                            <path d="M0,60 C40,90 78,150 80,200 A70,70 0 0 0 220,200 C222,150 260,90 300,60"
+                                  fill="none" stroke="var(--color-accent)" stroke-width="2"/>
+                            <ellipse cx="150" cy="60" rx="150" ry="20" fill="none" stroke="var(--color-accent)" stroke-width="2"/>
+                            <ellipse cx="150" cy="200" rx="70" ry="10" fill="none" stroke="var(--color-accent)" stroke-width="2"/>
+                        
+                            <line x1="335" y1="38" x2="298" y2="54" stroke="var(--color-text)" stroke-width="1.2" marker-end="url(#nbArrow)"/>
+                            <text x="340" y="42" font-size="15" fill="var(--color-text)">today</text>
+                        
+                            <line x1="335" y1="280" x2="200" y2="248" stroke="var(--color-text)" stroke-width="1.2" marker-end="url(#nbArrow)"/>
+                            <text x="340" y="284" font-size="14" fill="var(--color-text)">no initial<tspan x="340" dy="16">boundary</tspan></text>
                         </svg>
 
                         <p>Authors such as Linde and Vilenkin have put forward their own proposals for calculating the wave function from a suitable path integral. Even though they often obtain similar results to Hartle and Hawking, their wave functions disagree in one important prediction with the No-Boundary proposal: they predict a vastly different value for the inflaton field at the beginning of inflation.</p>
